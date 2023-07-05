@@ -5,9 +5,20 @@ from infrastructure.data_mapper import SQLiteDroneDataMapper, SQLiteMedicationDa
 from uuid import UUID
 from application.data_mappers import DroneModelDataMapper, MedicationModelDataMapper
 from application.models import DroneModel, MedicationModel
-
+from application.logger import BatteryLogger
+from fastapi_utils.tasks import repeat_every
+from config import EVENT_LOGS_PERIOD
 
 app = FastAPI()
+logger = BatteryLogger()
+
+
+@app.on_event('startup')
+@repeat_every(seconds=EVENT_LOGS_PERIOD)
+async def check_drone_battery_level():
+    drones = SQLiteDroneRepository().get_all()
+    data = [{"id": str(drone.id), "battery": drone.battery_level} for drone in drones]
+    logger.write(str(data))
 
 
 @app.get('/drones/')
