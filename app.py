@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Response, status
 from domain.use_cases import register_drone, load_drone, check_loaded_items, check_availables_drones, check_drone_battery_level
 from infrastructure.repositories import SQLiteDroneRepository, SQLiteMedicationRepository
-from infrastructure.data_mapper import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
+from infrastructure.data_mappers import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
 from uuid import UUID
 from application.data_mappers import DroneModelDataMapper, MedicationModelDataMapper
 from application.models import DroneModel, MedicationModel

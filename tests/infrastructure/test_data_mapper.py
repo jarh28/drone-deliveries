@@ -1,7 +1,7 @@
 import unittest
 from domain.entities import Drone, Medication
 from domain.value_objects import Model, State
-from infrastructure.data_mapper import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
+from infrastructure.data_mappers import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
 from uuid import uuid4
 
 

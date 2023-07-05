@@ -2,7 +2,7 @@ from domain.entities import Drone, Medication
 from uuid import UUID
 from infrastructure.decorators import sqlite_connection_handler
 from config import DATABASE_CONNECTION_STRING
-from infrastructure.data_mapper import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
+from infrastructure.data_mappers import SQLiteDroneDataMapper, SQLiteMedicationDataMapper
 from sqlite3 import Connection
 from domain.repositories import DroneRepository, ItemRepository
 
