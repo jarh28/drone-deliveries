@@ -14,14 +14,12 @@ from uuid import UUID, uuid4
 from dataclasses import dataclass
 
 
-@dataclass
 class Entity(ABC):
     @staticmethod
     def next_id():
         return uuid4()
 
 
-@dataclass
 class Item(Entity):
     def __init__(self, weight):
         self.__id: UUID = Entity.next_id()      
@@ -42,7 +40,6 @@ class Item(Entity):
         return self.__weight.value
 
 
-@dataclass
 class Medication(Item):
     def __init__(self, name: str, weight: float, code: str, image: bytes = None):
         super().__init__(weight)
@@ -63,7 +60,6 @@ class Medication(Item):
         return self.__image.value
 
 
-@dataclass
 class Drone(Entity):
     def __init__(self, serialNumber: str, model: Model, weightLimit: float, batteryCapacity: float, state: State):
         if not isinstance(model, Model):
